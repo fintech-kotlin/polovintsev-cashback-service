@@ -1,9 +1,28 @@
 package ru.tinkoff.fintech.listener
 
-class TransactionListener() {
+import org.slf4j.LoggerFactory
+import org.springframework.kafka.annotation.KafkaListener
+import org.springframework.stereotype.Component
+import ru.tinkoff.fintech.model.Transaction
+import ru.tinkoff.fintech.service.processTransaction.ProcessTransactionService
 
-    fun onMessage(message: String) {
-        TODO("Implement it")
+
+@Component
+class TransactionListener(
+    var processTransactionService: ProcessTransactionService
+) {
+
+    @KafkaListener(topics = ["\${spring.kafka.consumer.topic}"], groupId = "\${spring.kafka.consumer.groupId}")
+    fun onMessage(transaction: Transaction) {
+        try {
+            processTransactionService.process(transaction)
+        } catch (e: Exception) {
+            log.error("Error messages: ", e)
+        }
+    }
+
+    companion object {
+        private val log = LoggerFactory.getLogger(TransactionListener::class.java)
     }
 }
 

@@ -1,9 +1,11 @@
 package ru.tinkoff.fintech.service.notification
 
+import org.springframework.stereotype.Service
 import ru.tinkoff.fintech.model.NotificationMessageInfo
 
+@Service
 class NotificationMessageGeneratorImpl(
-    private val cardNumberMasker: CardNumberMasker
+     val cardNumberMasker: CardNumberMasker
 ) : NotificationMessageGenerator {
 
     override fun generateMessage(notificationMessageInfo: NotificationMessageInfo): String {

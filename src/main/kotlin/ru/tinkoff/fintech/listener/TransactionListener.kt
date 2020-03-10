@@ -12,7 +12,7 @@ class TransactionListener(
     var processTransactionService: ProcessTransactionService
 ) {
 
-    @KafkaListener(topics = ["\${spring.kafka.consumer.topic}"], groupId = "\${spring.kafka.consumer.groupId}")
+    @KafkaListener(topics = ["\${paimentprocessing.kafka.consumer.topic}"], groupId = "\${paimentprocessing.kafka.consumer.groupId}")
     fun onMessage(transaction: Transaction) {
         try {
             processTransactionService.process(transaction)
@@ -20,7 +20,7 @@ class TransactionListener(
             log.error("Error messages: ", e)
         }
     }
-
+    
     companion object {
         private val log = LoggerFactory.getLogger(TransactionListener::class.java)
     }

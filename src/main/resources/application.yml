@@ -1,17 +1,22 @@
 spring:
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:db
-    username: sa
-    password: sa
+    driver-class-name: org.postgresql.Driver
+    url: ****
+    username: ****
+    password: ****
+
+paimentprocessing:
   kafka:
     consumer:
       bootstrap-servers: 40.69.78.245:19092
       groupId: cashback
       topic: transactions
 
-#logging:
-#  level:
-#    org:
-#      springframework:
-#        kafka: debug
+rest:
+  api:
+    card: http://****/card-service/api/v1/card/{id}
+    client: http://****/client-service/api/v1/client/{id}
+    program: http://****/loyalty-service/api/v1/program/{id}
+    notification: http://****/notification-service/api/v1/client/{id}/message
+
+sing: polovintsev-cashback-service

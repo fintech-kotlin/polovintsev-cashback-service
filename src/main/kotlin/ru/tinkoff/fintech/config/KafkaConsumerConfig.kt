@@ -22,7 +22,7 @@ import ru.tinkoff.fintech.model.Transaction
 @Configuration
 class KafkaConsumerConfig {
 
-    @Value("\${spring.kafka.consumer.bootstrap-servers}")
+    @Value("\${paimentprocessing.kafka.consumer.bootstrap-servers}")
     lateinit var bootstrapServers: String
 
     @Bean

@@ -29,6 +29,10 @@ dependencyManagement {
     }
 }
 
+sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+}
+
 dependencies {
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8'
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-reflect'

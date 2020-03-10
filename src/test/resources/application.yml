@@ -4,11 +4,23 @@ spring:
     url: jdbc:h2:mem:db
     username: sa
     password: sa
+  jpa:
+    hibernate:
+      ddl-auto: create
 
 paimentprocessing:
   kafka:
     consumer:
-      bootstrapServers: ${spring.embedded.kafka.brokers}
+      bootstrap-servers: ${spring.embedded.kafka.brokers}
       groupId: testGroup
       topic: testTopic
+
+rest:
+  api:
+    card: http://****/card-service/api/v1/card/{id}
+    client: http://****/client-service/api/v1/client/{id}
+    program: http://****/loyalty-service/api/v1/program/{id}
+    notification: http://****/notification-service/api/v1/client/{id}/message
+
+sing: polovintsev-cashback-service
 

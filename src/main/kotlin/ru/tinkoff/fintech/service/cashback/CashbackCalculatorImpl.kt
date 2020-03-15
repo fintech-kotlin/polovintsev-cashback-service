@@ -1,5 +1,6 @@
 package ru.tinkoff.fintech.service.cashback
 
+import org.springframework.stereotype.Service
 import ru.tinkoff.fintech.model.TransactionInfo
 import java.lang.Double.min
 import java.math.BigDecimal
@@ -30,7 +31,7 @@ internal val MONTH_WITH_FIRST_LETTER = mapOf(
 )
 
 
-
+@Service
 class CashbackCalculatorImpl : CashbackCalculator {
 
     override fun calculateCashback(transactionInfo: TransactionInfo): Double {
